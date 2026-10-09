@@ -1075,6 +1075,8 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
 		
 		cell.optionLabel.textColor = textColor
 		cell.optionLabel.font = textFont
+		cell.optionLabel.numberOfLines = 0
+		cell.optionLabel.lineBreakMode = .byWordWrapping
 		cell.selectedBackgroundColor = selectionBackgroundColor
         cell.highlightTextColor = selectedTextColor
         cell.normalTextColor = textColor
@@ -1131,8 +1133,16 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
         }
         
         hide()
-    
+
 	}
+
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+
+    public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return cellHeight
+    }
 
 }
 
